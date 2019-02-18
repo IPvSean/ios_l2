@@ -1,0 +1,16 @@
+---
+- hosts: cisco
+  gather_facts: no
+
+  vars:
+    vlan: 10
+
+  tasks:
+    - name: Create VLAN
+      ios_vlan:
+        vlan_id: "{{ vlan }}"
+        name: test-vlan
+        state: present
+        interfaces:
+          - GigabitEthernet0/1
+          - GigabitEthernet0/2
